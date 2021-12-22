@@ -96,33 +96,50 @@
 
     <section id="water" class="water">
       <div class="water__container container">
-        <h2 class="water__title">О воде</h2>
+        <h2 class="water__title">Полезные свойства воды</h2>
         <div class="water__info">
-          <p class="water__description">Вода́ (оксид водорода, гидроксид водорода) — бинарное неорганическое соединение с химической формулой H2O: молекула воды состоит из двух атомов водорода и одного — кислорода, которые соединены между собой ковалентной связью. При нормальных условиях представляет собой прозрачную жидкость, не имеющую цвета (при малой толщине слоя), запаха и вкуса. В твёрдом состоянии называется льдом (кристаллы льда могут образовывать снег или иней), а в газообразном — водяным паром. Вода также может существовать в виде жидких кристаллов (на гидрофильных поверхностях)[7][8].</p>
+          <p class="water__description">Вода - источник жизни. Почему стоит пить воду ежедневно?
+
+            Вода - источник хорошего самочувствия, здоровья и нашей красоты. Вода наполняет питательными веществами клетки кожи.            
+            Сейчас мы коротко раскроем тему, почему же стоит постоянно пить воду<br/> <br/> 
+            <span class="water__text-ul">
+              <!-- Что дает нам вода?<br/>   -->
+                1. Вода приносит энергию <br/>            
+                2. Дарит питательные вещества.<br/>             
+                3. Выводит токсины.<br/>             
+                4. Вода способствует похудению.<br/>             
+                5. Состояние кожи, волос и ногтей также зависят от воды.<br/>             
+                6. Предотвращает мочекаменную болезнь.<br/> 
+                7. Способствует понижению артериального давления.<br/> 
+                9. Вода борется с головной болью.<br/> <br/> 
+            </span>
+            Вода – не панацея от всех бед. Однако, не стоит забывать об основных плюсах воды. 
+            Употребление ежедневной нормы воды может привести вас к красивому и 
+            здоровому состоянию лица, кожи и волос, а также улучшит Ваше самочувствие.</p>
         </div>
         <div class="water__certificates certificates">
           <h3 class="certificates__title">Сертификаты</h3>
           <div class="certificates__list">
             <div class="certificates__item">
-              <a href="#" class="certificates__link">
+              <a download href="/files/primer.pdf" class="certificates__link">
                 <img src="img/icons/file.svg" alt="" class="certificates__image">
                 <h4 class="certificates__subtitle">Сертификат сертификат сертификат</h4>
               </a>
             </div>
             <div class="certificates__item">
-              <a href="#" class="certificates__link">
+              <a download href="/files/primer.pdf" class="certificates__link">
                 <img src="img/icons/file.svg" alt="" class="certificates__image">
                 <h4 class="certificates__subtitle">Сертификат  о надлежащем качестве воды</h4>
               </a>
             </div>
             <div class="certificates__item">
-              <a href="#" class="certificates__link">
+              <a download href="/files/primer.pdf" class="certificates__link">
                 <img src="img/icons/file.svg" alt="" class="certificates__image">
                 <h4 class="certificates__subtitle">Сертификат  о надлежащем качестве воды</h4>
               </a>
             </div>
             <div class="certificates__item">
-              <a href="#" class="certificates__link">
+              <a download href="/files/primer.pdf" class="certificates__link">
                 <img src="img/icons/file.svg" alt="" class="certificates__image">
                 <h4 class="certificates__subtitle">Сертификат о надлежащем воды</h4>
               </a>
@@ -131,7 +148,6 @@
         </div>
       </div>
     </section>
-
 
     <section id="product-catalog" class="product-catalog">
       <div class="product-catalog__container container">
@@ -179,19 +195,19 @@
 
     </section>
 
-   <section id="contacts" class="contacts">
+    <section id="contacts" class="contacts">
      <div class="contacts__container container">
        <div class="contacts__content">
          <div class="contacts__text-block">
            <h2 class="contacts__title">Контакты</h2>
             <div class="contacts__info">
-              <a  href="tel:83422625237" class="contacts__link">Телефон: 8(342)262-52-37</a>
+              <a  href="tel:89656330511" class="contacts__link">Телефон: 8 (965)633-05-11</a>
               <a href="mailto:test@test.com" class="contacts__link">Email: test@test.com</a>
-              <a href="https://wa.me/189042697448" class="contacts__link">WhatsApp: 8(342)262-52-37 </a>
-              <a href="viber://chat?number=%2B79512990032" class="contacts__link">Viber: 8(342)262-52-37 </a>
+              <a href="https://wa.me/189656330511?text=Здравствуйте.%20Хотел%20бы%20заказать%20доставку%20воды" class="contacts__link">WhatsApp: 8 (965)633-05-11</a>
+              <a href="viber://add?number=89656330511" class="contacts__link">Viber: 8 (965)633-05-11</a>
             </div>
          </div>
-         <form id="sending" action="#" class="contacts__form sending-form">
+         <form id="sending" action="sendtelegram.php"  class="contacts__form sending-form">
            <div class="sending-form__input-box">
              <label class="sending-form__label">
                <h3 class="sending-form__input-title">Имя<span>*</span>:</h3>
@@ -199,16 +215,23 @@
              </label>
              <label class="sending-form__label">
                <h3 class="sending-form__input-title">Телефон<span>*</span>:</h3>
-               <input name="phone" type="number" class="sending-form__input _req" placeholder="Телефон"></input>
+               <input pattern="^(\+7|7|8) ?\(?[0-9]{3}\)?[-| ]?[0-9]{3}[-| ]?[0-9]{2}[-| ]?[0-9]{2}$" name="phone" type="text" class="sending-form__input _req _number" placeholder="Телефон"></input>
              </label>
            </div>
            <button type="submit" class="sending-form__button">заказать звонок</button>
          </form>
        </div>
      </div>
+     <div class="thanks-popup">
+       <div class="thanks-popup__box">
+        <h3 class="thanks-popup__title">Спасибо!</h3>
+        <p class="thanks-popup__description">Ожидайте звонка...</p>
+        <button class="thanks-popup__close"></button>
+       </div>
+     </div>
    </section>
 
-   <footer class="footer">
+    <footer class="footer">
      <div class="footer__container container">
        <div class="logo footer__logo">
          <div class="logo__link"><h1 class="logo__title title title_h2">Энергия Жизни</h1></div>
@@ -217,18 +240,20 @@
       <p class="footer__copyright">Все права защищены </br> © Энергия жизни - 2021</p>
 
       <div class="footer__socials">
-        <a href="#" class="footer__social-link">
+        <a href="tg://resolve?domain=dostavkins" target="_blank" class="footer__social-link">
           <img class="footer__social-image" src="img/icons/tg.svg" alt="telegram">
         </a>
-        <a href="#" class="footer__social-link">
+        <a href="https://www.instagram.com/dostavkins/" target="_blank" class="footer__social-link">
           <img class="footer__social-image" src="img/icons/instagram.svg" alt="instagram">
         </a>
-        <a href="#" class="footer__social-link">
+        <a href="https://vk.com/id679164222" target="_blank" class="footer__social-link">
           <img class="footer__social-image" src="img/icons/vk.svg" alt="vkontakte">
         </a>
       </div>
      </div>
-   </footer>
+    </footer>
+
+
 
   </div>
 

@@ -1,7 +1,12 @@
 <?php
-require 'phpmailer/PHPMailer.php';
-require 'phpmailer/SMTP.php';
-require 'phpmailer/Exception.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+require 'phpmailer/src/PHPMailer.php';
+require 'phpmailer/src/SMTP.php';
+require 'phpmailer/src/Exception.php';
 
 // Переменные важные для настройки почты
 $myaddres = 'konmitin@gmail.com';
@@ -19,26 +24,22 @@ $body = "
 ";
 
 // Настройка
-$mail = new PHPMailer\PHPMailer\PHPMailer();
+$mail = new PHPMailer();
 
-try {
-  $mail->isSMTP();
-  $mail->CharSet      = "UTF-8";
-  $mail->SMTPAuth     = true;
-  $mail->setLanguage('ru', 'phpmailer/language/');
-  //$mail->SMTPDebug = 2;
-  $mail->Debugoutput  = function($str, $level) {$GLOBALS['status'][] = $str;};
+$mail->CharSet      = "UTF-8";
+$mail->setLanguage('ru', 'phpmailer/language/');
 
-    // // Настройка почты
-    // $mail->Host       = 'smtp.mail.ru'; // SMTP сервера вашей почты
-    // $mail->Username   = 'i.testovyy'; // Логин на почте
-    // $mail->Password   = 'jk11dfqq'; // Пароль на почте
-    // $mail->SMTPSecure = 'ssl';
-    // $mail->Port       = 465;
-    // От кого письмо
-    $mail->setFrom('i.testovyy@inbox.ru', 'Igor'); // Адрес самой почты и имя отправителя
-    // Получатель письма
-    $mail->addAddress($myaddres);
+$mail->isSMTP();
+$mail->Host       = 'smtp.mail.ru'; // SMTP сервера вашей почты
+$mail->SMTPAuth     = true;
+$mail->Username   = 'i.testovyy@inbox.ru'; // Логин на почте
+$mail->Password   = 'F1amgRjUWNMeHniNET4U'; // Пароль на почте
+$mail->SMTPSecure = 'ssl';
+$mail->Port       = 465;
+// От кого письмо
+$mail->setFrom('i.testovyy@inbox.ru', 'Заявочная'); // Адрес самой почты и имя отправителя
+// Получатель письма
+$mail->addAddress($myaddres);
 
 // Отправка сообщения
 $mail->isHTML(true);
@@ -53,9 +54,8 @@ else {
   $message = "error";
 }
 
-$response = ['message', $message];
+$response = ['message' => $message];
 
 header('Content-type: application/json');
 echo json_encode($response);
-
- ?>
+?>
