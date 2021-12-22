@@ -1,20 +1,19 @@
-/*------------ИМПОРТ------------*/
+// === ОБЩИЕ ===
+@import 'common/reset';
+@import 'common/variable';
+@import 'common/fonts';
+@import 'common/general';
 
-@import 'common/variable'; //--ПЕРЕМЕННЫЕ
-@import 'common/general'; //---ОСНОВНЫЕ СТИЛЕЙ
-@import 'common/reset'; //-----ОБНУЛЯЮЩИЕ СТИЛЕЙ
-@import "common/fonts"; //-----ШРИФТЫ
 
-/*------------HEADER------------*/
-
-// @import "header";
-
-/*------------MAIN--------------*/
-
-// @import "main";
-
-/*------------FOOTER------------*/
-
-// @import "footer";
-
-/*------------------------------*/
+@import 'header';
+@import 'certificates';
+@import 'contacts';
+@import 'product-catalog';
+@import 'about';
+@import 'product-slider';
+@import 'sending-form';
+@import 'swiper-bundle';
+@import 'swiper';
+@import 'thanks-popup';
+@import 'water';
+@import 'footer';

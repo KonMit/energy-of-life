@@ -1,12 +1,17 @@
 * {
-    font-family: $base-ff, sans-serif;
-    font-size: $base-fsz;
-    font-weight: $base-fw;
-    color: $base-c;
+  user-select: none;
+  font-family: $base-ff, sans-serif;
+  font-size: $base-fsz;
+  font-weight: $base-fw;
+  color: $base-c;
 }
 
 body {
-    background: #000;
+    background: #fff;
+
+}
+.noscroll {
+  overflow: hidden;
 }
 
 .container {
@@ -14,8 +19,10 @@ body {
     margin: 0 auto;
 }
 
-.button {}
-
 .wrapper {
     width: 100%;
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    flex-direction: column;
 }

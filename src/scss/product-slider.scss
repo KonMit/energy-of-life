@@ -1,0 +1,37 @@
+.product-slider {
+  &__slide {
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+
+  }
+  &__content {
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: 350px;
+    margin-bottom: 20px;
+  }
+  &__image {
+  }
+  &__name {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+  &__price {
+    font-size: 16px;
+    font-weight: 400;
+  }
+  &__pagination {
+    top: 0;
+    height: 15px;
+  }
+}

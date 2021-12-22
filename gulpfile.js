@@ -8,7 +8,8 @@ const path = {
         js:     project_folder + "/js/",
         img:    project_folder + "/img/",
         fonts:  project_folder + "/fonts/",
-        pug:    project_folder + '/'
+        pug:    project_folder + '/',
+        php:    project_folder + '/',
     }, //здесь хранятся пути вывода файлов
     src: {
         html:  [source_folder + "/*.html", "!" + source_folder + "/_*.html"],
@@ -16,7 +17,8 @@ const path = {
         js:     source_folder + "/js/index.js",
         img:    source_folder + "/img/**/*.{jpg,png,svg,ico,webp,gif}",
         fonts:  source_folder + "/fonts/**/*.{ttf, woff, woff2, otf}",
-        pug:    source_folder + '/index.pug'
+        pug:    source_folder + '/index.pug',
+        php:    source_folder + '/*.php',
     }, //здесь хранятся пути исходников
     watch: {
         html:   source_folder + "/**/*.html",
@@ -24,7 +26,8 @@ const path = {
         js:     source_folder + "/js/**/*.js",
         img:    source_folder + "/img/**/*.{jpg,png,svg,ico,webp,gif}",
         fonts:  source_folder + '/fonts/**/*.{ttf, woff, woff2, otf}',
-        pug:    source_folder + '/**/*.pug'
+        pug:    source_folder + '/**/*.pug',
+        php:    source_folder + '/**/*.php',
     }, //здесь хранятся пути исходников, которые надо слушать
     clean: "./" + project_folder + "/**/*"
 }
@@ -42,6 +45,7 @@ const { src, dest, parallel, series, watch } = require('gulp'),
     pugGulp     = require('gulp-pug'), //----------------------Компилирует .pug в .html
     ttf2woff    = require('gulp-ttf2woff'), //-------------------Конвертируем .ttf в .woff
     ttf2woff2   = require('gulp-ttf2woff2'); //-------------------Конвертируем .ttf в .woff2
+    imagemin = require('gulp-imagemin'); //-----------------------Минимизация картинок
 
 function browserSync() {
     browsersync.init({
@@ -59,6 +63,12 @@ function browserSync() {
 //         .pipe( dest(path.build.pug)) // копируем .html в папку проекта
 //         .pipe(browsersync.stream())  // обновляет браузер
 // }
+
+function php() {
+  return src(path.src.php)
+    .pipe(dest(path.build.php))  // копирует файлы php в папку проекта
+    .pipe(browsersync.stream())  // обновляет браузер
+}
 
 function html() {
     return src(path.src.html)
@@ -96,7 +106,7 @@ function scss() {
 
 function js() {
     return src(path.src.js)
-        .pipe(dest(path.build.js))  // копирует файлы js в папку проекта
+        .pipe(fileinclude()) // копирует файлы js в папку проекта
         .pipe(uglify())             // сжимает файл js
         .pipe(rename({
             extname: ".min.js"      // переименовывает сжатый файл script.js в script.min.js
@@ -109,26 +119,35 @@ function js() {
 function images() {
     return src(path.src.img)
         .pipe(dest(path.build.img)) //копирует файлы img в папку проекта
+        .pipe(imagemin()) //минимизирует картинки
         .pipe(browsersync.stream()) //обновляет браузер
 }
-
+function files() {
+  return src(source_folder + '/files/**/*.*')
+    .pipe(dest(project_folder + '/files'))
+}
 function watchFiles() {
     watch([path.watch.img], images); // слушает файлы images
     watch([path.watch.js], js);      // слушает файлы js
     watch([path.watch.scss], scss);  // слушает файлы css
     watch([path.watch.html], html);  // слушает файлы html
+    watch([path.watch.php], php);  // слушает файлы html
     // watch([path.watch.pug], pug);  // слушает файлы pug
 }
+
 
 
 function clean() {
     return del(path.clean); // удаляет ненужные файлы
 }
 
-const build = series(parallel(html, scss, js, fonts, images, fontsToDist, watchFiles, browserSync), clean); //
+const build = series(clean, parallel(html, php, scss, js, files, fonts, images, fontsToDist, watchFiles, browserSync)); //
 
 
 // exports.pug = pug;
+exports.html = html;
+exports.php = php;
+exports.files = files;
 exports.watchFiles = watchFiles;
 exports.fontsToDist = fontsToDist;
 exports.scss = scss;

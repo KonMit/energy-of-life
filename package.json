@@ -1,8 +1,8 @@
 {
-  "name": "energy-o-life",
+  "name": "energy-of-life",
   "version": "1.0.0",
-  "description": "Landiing page 'Энергия жизни'",
-  "main": "index.pug",
+  "description": "Landiing page - 'Энергия жизни'",
+  "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -30,7 +30,9 @@
     "gulp-uglify-es": "^2.0.0",
     "sass": "^1.42.1"
   },
-  "dependencies": {},
+  "dependencies": {
+    "swiper": "^7.2.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/KonMit/WorkoutLanding.git"
